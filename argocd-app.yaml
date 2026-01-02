@@ -1,0 +1,21 @@
+# argocd-app.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: web-app
+  namespace: argocd
+spec:
+  project: my-first-project
+  source:
+    repoURL: 'https://github.com/Saul-Goodman-art/web-app-devops.git'
+    targetRevision: HEAD
+    path: helm/web-app  # путь к helm чарту
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
