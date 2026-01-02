@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 )
@@ -23,7 +24,7 @@ func contactPage(w http.ResponseWriter, r *http.Request) {
 func main() {
 
 	http.HandleFunc("/home", homePage)
-	http.HandleFunc("/about", aboutPage)
+	http.HandleFunc("/about_about", aboutPage)
 	http.HandleFunc("/contact", contactPage)
 
 	err := http.ListenAndServe("0.0.0.0:8080", nil)
@@ -34,4 +35,6 @@ func main() {
 	// gaga
 	// triger4
 	// triger5
+
+	fmt.Println("trigger_9")
 }
