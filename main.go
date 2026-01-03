@@ -23,6 +23,8 @@ func contactPage(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
+	fmt.Println("trigger_11")
+
 	http.HandleFunc("/home", homePage)
 	http.HandleFunc("/about_about_about", aboutPage)
 	http.HandleFunc("/contact", contactPage)
@@ -36,5 +38,4 @@ func main() {
 	// triger4
 	// triger5
 
-	fmt.Println("trigger_10")
 }
