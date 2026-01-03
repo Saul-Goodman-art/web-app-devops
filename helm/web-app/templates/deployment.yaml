@@ -5,6 +5,7 @@ metadata:
   name: {{ include "web-app.fullname" . }}
   labels:
     {{- include "web-app.labels" . | nindent 4 }}
+
 spec:
   replicas: 1
   selector:
