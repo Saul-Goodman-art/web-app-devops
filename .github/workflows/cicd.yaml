@@ -10,7 +10,7 @@ permissions:
 # ▲▲▲ ВАЖНО: ДОБАВЬТЕ ЭТИ PERMISSIONS ▲▲▲
 
 
-# Триггеры запуска/  Exclude the workflow to run on changes to the following files
+# Триггеры запуска (полного цикла workflow?)/  Exclude the workflow to run on changes to the following files
 on:
   push:
     branches:
