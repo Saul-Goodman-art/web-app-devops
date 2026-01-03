@@ -1,0 +1,49 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: web-app-prod
+  namespace: argocd
+  annotations:
+    # Автоматически синхронизировать при изменении
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  project: my-first-project
+
+  source:
+    repoURL: 'https://github.com/Saul-Goodman-art/web-app-devops.git'
+    targetRevision: HEAD  # Можно указать конкретный тег, например: v1.0.123
+    path: helm/web-app
+
+    # КРИТИЧЕСКИ ВАЖНО: параметры Helm
+    helm:
+      # Переопределяем значения из values.yaml
+      parameters:
+        - name: image.tag
+          value: "latest"  # значение по умолчанию
+
+      # Альтернативно: используем valueFiles с подстановкой
+      valueFiles:
+        - values.yaml
+
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+
+    # Политика ретраев
+    retry:
+      limit: 3
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+
+    syncOptions:
+      - CreateNamespace=true
+      - RespectIgnoreDifferences=true
+      - ApplyOutOfSyncOnly=true
