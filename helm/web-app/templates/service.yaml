@@ -2,14 +2,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: web-app
+  name: {{ include "web-app.fullname" . }}
   labels:
-    app: web-app
+    {{- include "web-app.labels" . | nindent 4 }}
 spec:
   ports:
-  - port: 80
-    targetPort: 8080
-    protocol: TCP
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
   selector:
-    app: web-app
-  type: ClusterIP
+    {{- include "web-app.selectorLabels" . | nindent 4 }}
+  type: {{ .Values.service.type }}
