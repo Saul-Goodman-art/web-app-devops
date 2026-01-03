@@ -23,10 +23,10 @@ func contactPage(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
-	fmt.Println("trigger_13")
+	fmt.Println("trigger_14")
 
 	http.HandleFunc("/home", homePage)
-	http.HandleFunc("/about_about_about", aboutPage)
+	http.HandleFunc("/about_us", aboutPage)
 	http.HandleFunc("/contact", contactPage)
 
 	err := http.ListenAndServe("0.0.0.0:8080", nil)
