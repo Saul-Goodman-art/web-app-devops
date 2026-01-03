@@ -77,6 +77,8 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/webapp:${{github.run_id}}  #Тег образа: webapp:${{github.run_id}} (уникальный ID запуска)
 
+
+
   update-newtag-in-helm-chart: # вносит нужный тэг в values.yaml, для деплоя новой версии приложения в кубере? И пушит новый тэг в гит! В гите, в values.yaml, пока старый тэг?
     runs-on: ubuntu-latest
 
@@ -89,6 +91,14 @@ jobs:
     # ▲▲▲ ДОБАВЬТЕ ЭТО УСЛОВИЕ ▲▲▲
 
     steps:
+
+
+    - name: Wait 30 seconds for stability
+      run: |
+        echo "Waiting for Docker image to be fully available..."
+        sleep 30  # Ждем 30 секунд перед обновлением Helm 
+        
+
     - name: Checkout repository              # 1. Клонирование с токеном и полной историей
       uses: actions/checkout@v4
       with:
