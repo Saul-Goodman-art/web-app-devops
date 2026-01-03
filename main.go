@@ -23,7 +23,7 @@ func contactPage(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
-	fmt.Println("trigger_11")
+	fmt.Println("trigger_12")
 
 	http.HandleFunc("/home", homePage)
 	http.HandleFunc("/about_about_about", aboutPage)
