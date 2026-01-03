@@ -18,6 +18,7 @@ on:
     paths-ignore:
       - helm/**
       - 'README.md'
+      - '.github/workflows/**'  # ← ДОБАВЬТЕ ЭТУ СТРОКУ
 
 jobs:
 
