@@ -83,7 +83,9 @@ jobs:
     needs: push
 
     # ▼▼▼ ДОБАВЬТЕ ЭТО УСЛОВИЕ ▼▼▼
-#    if: ${{ github.event.head_commit.message != 'fix: Update tag in Helm chart' }}
+    if: >
+      ${{ github.actor != 'github-actions[bot]' &&
+          github.event.head_commit.message != 'fix: Update tag in Helm chart' }}
     # ▲▲▲ ДОБАВЬТЕ ЭТО УСЛОВИЕ ▲▲▲
 
     steps:
