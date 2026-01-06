@@ -8,7 +8,7 @@ image:
   repository: slava871/webapp
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "20679527846"
+  tag: "20754784474"
 
 imagePullSecrets: []
 nameOverride: ""
