@@ -117,3 +117,14 @@ jobs:
         git add helm/web-app/values.yaml
         git commit -m "fix: Update tag in Helm chart"
         git push
+
+      # --- НАЧАЛО ИЗМЕНЕНИЙ ---
+    - name: Create and push Git Tag
+      run: |
+        # Создаем легковесный тег с префиксом build- и номером запуска
+        # Например: build-41123456
+        git tag build-${{ github.run_id }}
+        
+        # Пушим тег в репозиторий
+        git push origin build-${{ github.run_id }}
+    # --- КОНЕЦ ИЗМЕНЕНИЙ ---
